@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="it"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOLIENDO CAFÉ - Maciniamo Insieme - Cuneo</title>
+<style>
+/* MOVIMENTI MOLIENDO - morbidi */
+@keyframes saliSu {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes galleggia {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.hero h1, .hero p, .hero button {
+  animation: saliSu 0.8s ease both;
+}
+.hero button {
+  animation-delay: 0.3s;
+}
+.card, .categoria {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+.card.visibile, .categoria.visibile {
+  opacity: 1;
+  transform: translateY(0);
+}
+.badge, .pill {
+  animation: galleggia 3s ease-in-out infinite;
+}
+img:hover {
+  transform: scale(1.03);
+  transition: 0.4s;
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,400i&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--b:#3B2314;--bd:#2A180C;--cream:#FFF7EA;--peach:#FFDAB9}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bd);color:var(--cream);font-family:Inter,sans-serif;overflow-x:hidden}
+header{display:flex;align-items:center;padding:10px 4%;background:#3B2314;position:sticky;top:0;z-index:80;gap:20px;border-bottom:1px solid #ffffff20}
+.logo-area{display:flex;align-items:center;gap:12px;text-decoration:none;color:#FFF7EA}
+.logo-img{height:48px;width:48px;border-radius:50%;object-fit:cover;background:#fff;padding:2px}
+.logo-text{letter-spacing:4px;font-weight:900;font-size:16px;white-space:nowrap}
+.nav-desktop{display:flex;gap:22px;align-items:center;margin-left:auto}
+.nav-desktop a{color:#FFF7EA;text-decoration:none;font-size:13px;letter-spacing:1px;font-weight:700;white-space:nowrap}
+.nav-desktop a:hover{color:#FFDAB9}
+.btn-prenota{background:#FFF7EA;color:#3B2314;padding:11px 22px;border-radius:30px;text-decoration:none;font-weight:900;font-size:13px;white-space:nowrap}
+.hamburger{display:none}
+.mobile-menu{display:none}
+.btn{padding:12px 24px;border-radius:30px;text-decoration:none;font-weight:800;display:inline-block;font-size:14px}
+.btn-light{background:var(--cream);color:var(--b)}.btn-outline{border:1.5px solid var(--cream);color:var(--cream)}
+
+/* HERO COME PRIMA - VIDEO PIENO SCHERMO, SCRITTA A SINISTRA */
+.hero-full{position:relative;width:100%;height:92vh;min-height:620px;overflow:hidden;background:#000}
+.hero-full video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-full .sfumatura{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to right, rgba(42,24,12,0.78) 0%, rgba(42,24,12,0.45) 42%, rgba(42,24,12,0.05) 75%, rgba(0,0,0,0) 100%);z-index:1}
+.hero-testo{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 6%;color:#FFF7EA;text-align:left}
+.hero-testo h1{font-family:Fraunces,serif;font-size:64px;line-height:0.95;font-weight:600;text-align:left;text-shadow:0 4px 20px rgba(0,0,0,0.6)}
+.hero-testo h1 i{font-weight:400;font-size:40px;display:block;color:#FFDAB9;margin-top:8px}
+.hero-testo p.sotto{margin-top:16px;font-size:16px;line-height:1.6;max-width:600px;text-align:left}
+.hero-bottoni{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;justify-content:flex-start}
+.badge-row{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap;justify-content:flex-start}
+.badge{border:1px solid #ffffff60;padding:6px 12px;border-radius:20px;font-size:11px;letter-spacing:1px;background:rgba(0,0,0,0.3)}
+
+.slider{padding:18px 5%;display:flex;gap:14px;overflow:auto;background:var(--bd)}
+.slider img{width:320px;height:220px;object-fit:cover;border-radius:16px;flex-shrink:0}
+.chisiamo{padding:70px 5%;background:var(--cream);color:var(--bd);border-radius:32px;margin:20px 3% 0}
+.menu{padding:60px 0;background:var(--cream);color:var(--bd)}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;max-width:600px;margin:0 auto;padding:0 14px}
+.menu-card{position:relative;height:215px;border-radius:20px;overflow:hidden;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.menu-card::after{content:'';position:absolute;left:0;right:0;bottom:0;height:25px;background:#3B2314}
+.menu-card img{width:100%;height:100%;object-fit:cover;display:block}
+.menu-card span{position:absolute;left:0;right:0;bottom:0;height:25px;z-index:2;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:13px}
+.menu-card.active{outline:3px solid #FFB703}
+.menu-list-box{max-width:600px;margin:14px auto 0;background:white;border-radius:20px;padding:16px;box-shadow:0 6px 22px rgba(0,0,0,.08);margin-left:14px;margin-right:14px}
+.dove-prenota{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--cream);color:var(--bd);border-top:1px solid #e8d5c0}
+.box{padding:40px 7%}
+input,select,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #d8b8a0;margin:6px 0;background:#fff;font-size:16px}
+.btn-send{width:100%;padding:14px;border-radius:30px;border:none;font-weight:800;cursor:pointer;margin-top:8px}
+.wa{background:#25D366;color:#fff}.fb{background:#1877F2;color:#fff}
+footer{background:var(--bd);color:var(--cream);padding:30px 5%;text-align:center;font-size:13px}
+.card-pranzo{background:#E8D5B8;border-radius:12px;padding:12px;text-align:center;border:1px solid #D8C0A0}
+.card-pranzo .giorno{font-weight:800;color:#3B2314;font-size:14px;letter-spacing:1px;display:block;margin-bottom:10px}
+.card-pranzo img{width:100%;height:auto;object-fit:contain}
+
+@media(max-width:900px){
+  .nav-desktop{display:none}
+  .hamburger{display:flex;width:44px;height:44px;border-radius:12px;border:1px solid #ffffff30;background:rgba(255,255,255,0.08);flex-direction:column;gap:5px;align-items:center;justify-content:center;cursor:pointer;margin-left:auto}
+  .hamburger span{width:20px;height:2.5px;background:#fff;display:block;border-radius:2px}
+  .mobile-menu.open{display:flex;position:fixed;top:68px;left:0;right:0;background:#3B2314;padding:20px 6% 30px;flex-direction:column;z-index:70}
+  .mobile-menu a{color:#fff;text-decoration:none;font-size:18px;padding:14px 0;border-bottom:1px solid #ffffff12;display:block}
+  .mobile-menu a.prenota-mobile{background:#FFF7EA;color:#3B2314;padding:14px 20px;border-radius:30px;text-align:center;font-weight:900;margin-top:20px;border:none}
+  .hero-full{height:92vh;min-height:600px}
+  .hero-full .sfumatura{background:rgba(59,35,20,0.35)}
+  .hero-testo{padding:0 20px;text-align:center;align-items:center;justify-content:center}
+  .hero-testo h1{font-size:38px;text-align:center}
+  .hero-testo h1 i{font-size:26px}
+  .hero-testo p.sotto{text-align:center}
+  .hero-bottoni{justify-content:center}
+  .badge-row{justify-content:center}
+  .chisiamo-grid,.dove-prenota{grid-template-columns:1fr!important}
+}
+</style></head><body>
+
+<header>
+  <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="logo-area">
+    <img src="moliendologo.jpg" class="logo-img">
+    <div class="logo-text">MOLIENDO CAFÉ</div>
+  </a>
+  <nav class="nav-desktop">
+    <a href="#">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#prenota">Prenota un Tavolo</a>
+    <a href="#chisiamo">Chi Siamo</a>
+    <a href="#dove">Contatti</a>
+    <a href="#prenota" class="btn-prenota">PRENOTA</a>
+  </nav>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</header>
+<div class="mobile-menu" id="mob">
+  <a href="#" onclick="toggleMenu()">Home</a>
+  <a href="#menu" onclick="toggleMenu()">Menu</a>
+  <a href="#prenota" onclick="toggleMenu()">Prenota un Tavolo</a>
+  <a href="#chisiamo" onclick="toggleMenu()">Chi Siamo</a>
+  <a href="#dove" onclick="toggleMenu()">Contatti</a>
+  <a href="#prenota" onclick="toggleMenu()" class="prenota-mobile">PRENOTA ORA</a>
+  <p style="color:#fff;font-size:14px;margin-top:16px">Corso Dante 30, 12100 Cuneo<br>Instagram / Facebook</p>
+</div>
+
+<section class="hero-full">
+  <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1442512595331-e89e73853f31">
+    <source src="video.mp4" type="video/mp4">
+  </video>
+  <div class="sfumatura"></div>
+  <div class="hero-testo">
+    <h1>Maciniamo Insieme.<br><i>Cuneo incontra Manila.</i></h1>
+    <p style="font-size:12px;letter-spacing:3px;margin-top:16px">COLAZIONE • PRANZO • APERITIVO</p>
+    <p class="sotto">Il tuo caffè, macinato fresco ogni giorno.</p>
+    <div class="hero-bottoni">
+      <a href="#menu" class="btn btn-light">Scopri Menu 9 Categorie</a>
+      <a href="#prenota" class="btn btn-outline">Prenota Tavolo</a>
+    </div>
+    <div class="badge-row"><span class="badge">☕ COLAZIONE 7:00</span><span class="badge">🍝 PRANZO 12-14:30</span><span class="badge">🍸 APERITIVO 16-20</span></div>
+  </div>
+</section>
+
+<h2 style="text-align:center;padding:22px 5% 0;background:var(--bd)">I nostri piatti</h2>
+<div class="slider"><img src="cocktail.jpg"><img src="torte.jpg"><img src="aperitivo.jpg"><img src="tapsilog.jpg"><img src="ubecake.jpg"><img src="frappe.jpg"><img src="torta cioccolata.jpg"></div>
+
+<section class="chisiamo" id="chisiamo"><div class="chisiamo-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:40px"><div><h2 style="font-family:Fraunces,serif;font-size:44px;color:var(--b)">Chi Siamo</h2><p style="margin:8px 0;font-weight:700;letter-spacing:1px;font-size:11px">MACINIAMO INSIEME • CORSO DANTE 30, CUNEO • DAL 2019</p><p style="line-height:1.7;font-size:16px;margin-top:18px">Moliendo significa macinare. Maciniamo chicchi italiani e storie filippine ogni mattina alle 5AM a Corso Dante 30.<br><br>Siamo una caffetteria di famiglia nel cuore di Cuneo, dove la passione per il caffè di qualità si unisce alla convivialità. Dal 2019 siamo il punto di ritrovo per chi cerca un ambiente accogliente, prodotti artigianali e momenti speciali da condividere. Vi portiamo a tavola i sapori autentici delle <em>Filippine</em> accanto ai classici italiani.<br><br><em>Maciniamo Insieme. Cuneo incontra Manila.</em></p></div><div><img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0" style="width:100%;height:440px;object-fit:cover;border-radius:24px"></div></div></section>
+
+<section class="menu" id="menu">
+<h2 style="font-family:Fraunces,serif;font-size:42px;text-align:center;color:var(--b)">Il Menu</h2><br><br>
+<div class="menu-grid" id="grid"></div>
+<div class="menu-list-box">
+<h3 id="title" style="margin:0 0 10px;color:#3B2314;font-size:18px;font-weight:800;border-bottom:2.5px solid #3B2314;padding-bottom:10px">COCKTAIL</h3>
+<div id="list"></div>
+</div>
+</section>
+
+<div class="dove-prenota"><div class="box" id="dove"><h2 style="font-family:Fraunces,serif;font-size:32px;color:var(--b)">Dove Siamo</h2><p style="margin:16px 0"><strong>Lunedì - Sabato 7:00-20:00</strong><br>Corso Dante 30, 12100 Cuneo (CN)<br>Italia</p><iframe src="https://maps.google.com/maps?q=Corso+Dante+30,+12100+Cuneo+CN,+Italy&t=&z=17&ie=UTF8&iwloc=&output=embed" style="width:100%;height:320px;border:0;border-radius:16px"></iframe><br><br><a href="https://maps.google.com/?q=Corso+Dante+30+12100+Cuneo" target="_blank" class="btn btn-light" style="background:var(--b);color:var(--cream)">Apri in Google Maps</a> <a href="https://www.google.com/maps/dir/?api=1&destination=Corso+Dante+30+12100+Cuneo" target="_blank" class="btn btn-outline" style="border-color:var(--b);color:var(--b)">→ Indicazioni</a></div><div class="box" id="prenota" style="background:#fffaf0;border-left:1px solid #e8d5c0"><h2 style="font-family:Fraunces,serif;font-size:32px;color:var(--b)">Prenota</h2><label>Nome *</label><input id="nm" placeholder="Il tuo nome"><label>Telefono *</label><input id="tl" placeholder="+39 XXX XXX XXXX"><label>Che prenotazione?</label><select id="ty"><option>Tavolo</option><option>Piccolo Evento</option><option>Torta</option><option>Cookies</option></select><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><label>Quante persone</label><input id="pe" type="number" value="2" min="1"></div><div><label>Data *</label><input id="da" type="date"></div></div><label>Note / Messaggio</label><textarea id="ms" rows="3" placeholder="Aggiungi eventuali note..."></textarea><button onclick="sendWA()" class="btn-send wa">Invia su WhatsApp</button><button onclick="sendFB()" class="btn-send fb">Invia su Facebook</button><p id="ok" style="display:none;margin-top:14px;font-weight:800;color:var(--b);background:#fff;padding:12px;border-radius:12px;text-align:center">Grazie per il vostro messaggio, vi contatteremo al più presto possibile 💚</p></div></div>
+
+<footer>©️ MOLIENDO CAFÉ — Maciniamo Insieme. Cuneo incontra Manila. — Corso Dante 30, 12100 Cuneo</footer>
+
+<script>
+function toggleMenu(){document.getElementById('mob').classList.toggle('open')}
+const menuConFoto={
+  "Caffetteria":{img:"caffetteria.jpg", items:[["Caffè Espresso","1,50€"],["Caffè Doppio","2,00€"],["Caffè Deccaffeinato","1,60€"],["Caffè Corretto","1,80€"],["Caffè Shakerato","2,20€"],["Orzo/Ginseng piccolo","1,60€"],["Orzo/Ginseng grande","1,80€"],["Cappuccino","1,70€"],["Cappuccino Decaffeinato","1,80€"],["Cappuccino d'orzo/ginseng","1,80€"],["Cappuccino di soia","2,00€"],["Marocchino","1,70€"],["Marocchino d'orzo/ginseng","1,80€"],["Latte bianco","1,50€"],["Latte Macchiato","1,80€"],["Cioccolata Calda","3,00€"],["Tè Caldo Tisana","3,00€"],["Punch Mandarino","2,80€"]]},
+  "Aperitivo / Cocktail":{img:"cocktails.jpg", items:[["Aperol Spritz","5,50€"],["Baileys","3,00€"],["Campari Soda","3,50€"],["Negroni","5,00€"],["Hugo","6,00€"]]},
+  "Birre":{img:"Birra.jpg", items:[["Heineken","3,00€"],["Moretti","3,00€"],["Corona","3,50€"],["Ceres","4,00€"],["Ichnusa","3,00€"],["Bionda 0,20cl","2,70€"],["Bionda 0,40cl","4,00€"]]},
+  "Frappe":{img:"frappe.jpg", items:[["Strawberry Cheesecake Frappe","6,00€"],["Coffee Biscoff","6,00€"],["Cheesy Ube Frappe","6,00€"]]},
+  "Bibite":{img:"bibite.jpg", items:[["Acqua 0,50 l","1,00€"],["Acqua 1,50 l","2,00€"],["Bicchiere d'acqua","0,50€"],["Coca-cola/Zero","2,50€"],["Fanta","2,50€"],["Schweppes","2,50€"],["Lemon soda","2,50€"],["Estatè Pesca/Limone","2,50€"],["Redbull","3,00€"],["Pesca, Ananas, Ace, Pera","2,50"],["Mirtilo","3,00€"],["Spremuta d'arancia","3,00€"]]},
+  "Pranzo Settimanale":{img:"pranzo settimanale.jpg",tipo:"settimanale",giorni:[{giorno:"LUNEDÌ", nome:"Pancit + Lumpia", img:"pancit.jpg", desc:"Pancit Canton con pollo, surimi e verdure miste accanto 3  pezzi di Lumpiang Shanghai (filippino involtino)", prezzo:"10€ (inclusa una bevanda a scelta)"},{giorno:"MARTEDÌ", nome:"Tapsilog + Riso", img:"tapsilog.jpg", desc:"Striscioline di manzo marinato e grigliato, riso saltata in padella all'aglio, uovo all'occhio di bue, pomodori e cetrioli freschi", prezzo:"10€ (inclusa una bevanda a scelta)"},{giorno:"MERCOLEDÌ", nome:"Burgersteak + Riso e verdure", img:"burger.jpg", desc:"Hamburger di manzo con salsa ai funghi, servito con riso bianco e verdure miste.", prezzo:"10€ (inclusa una bevanda a scelta)"},{giorno:"GIOVEDÌ", nome:"Italiano", img:"italiano.jpg", desc:"Piatto del giorno tipico italiano", prezzo:"10€ (inclusa una bevanda a scelta)"},{giorno:"VENERDÌ", nome:"Chicken Inasal + Riso", img:"inasal.jpg", desc:"Pollo marinato alla filippina cotto al forno, servito con riso bianco e insalata fresca", prezzo:"10€ (inclusa una bevanda a scelta)"}]},
+  "Panini Filippino":{img:"ubepandesal.jpg", items:[["Spanish bread","1,00€"],["Ensaymada","1,00€"],["Special Ensaymada","1,50€"],["Cheesebread","1,00€"],["Milky bread","1,00€"],["Pandesal","0,75€"],["Ube Pandesal","1,00€"],["Pan de coco","1,00€"],["Cinnamon","1,00€"],["Brownies","2,00€"],["Cake","4,00€"]]},
+  "Cornetti ":{img:"cornetti.jpg", items:[["Cioccolato","1,40€"],["Crema","1,40€"],["Marmellata","1,40€"],["Pistacchio","1,50€"],["Vuoto","1,50€"],["Frutti di bosco","1,50€"]]},
+  "Torta / Cookies":{img:"torta e cookies.jpg", items:[["Torta a scelta / Prenotazione"],["Cookies Biscoff","1,50€"],["Cookies Red velvet","1,50€"],["Cookies Cioccolato","1,50€"],["Cookies Walnut","1,50€"]]}
+};
+const cats=Object.keys(menuConFoto);
+function renderGrid(){
+  const grid=document.getElementById('grid');
+  grid.innerHTML="";
+  cats.forEach(cat=>{
+    const div=document.createElement('div');
+    div.className='menu-card'; div.dataset.cat=cat;
+    div.innerHTML=`<img src="${menuConFoto[cat].img}"><span>${cat}</span>`;
+    div.onclick=()=>showCat(cat);
+    grid.appendChild(div);
+  });
+}
+function showCat(cat){
+  document.querySelectorAll('.menu-card').forEach(c=>c.classList.toggle('active',c.dataset.cat===cat));
+  document.getElementById('title').innerText=cat.toUpperCase();
+  const d=menuConFoto[cat];
+  const list=document.getElementById('list');
+  if(d.tipo==="settimanale"){
+    list.innerHTML=`<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">`+d.giorni.map(g=>`<div class="card-pranzo" style="background:#E8D5B8;border-radius:16px;padding:0;overflow:hidden;text-align:center"><div style="background:#3B2314;color:#FFF7EA;padding:10px;font-weight:800;letter-spacing:1px">${g.giorno}</div><img src="${g.img}" style="width:100%;height:240px;object-fit:cover;display:block" onerror="this.src='pranzo settimanale.jpg'"><div style="padding:14px"><h3 style="margin:0 0 6px;font-size:19px;color:#2b1a1a">${g.nome}</h3><p style="font-size:13px;margin:0 0 8px;opacity:0.8">${g.desc}</p><b style="font-size:17px;color:#3B2314">${g.prezzo}</b></div></div>`).join('')+`</div>`;
+  } else {
+    list.innerHTML=d.items.map(v=>`<div style="display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid #eee"><span>${v[0]}</span><b>${v[1]}</b></div>`).join('');
+  }
+}
+renderGrid(); showCat("Cocktail");
+function text(){return `Ciao Moliendo! Nome:${nm.value} Tel:${tl.value} Cosa:${ty.value} Pers:${pe.value} Data:${da.value} Msg:${ms.value}`;}
+function sendWA(){if(!nm.value||!tl.value||!da.value){alert('Nome Tel Data obbligatori');return}window.open(`https://wa.me/393331234567?text=${encodeURIComponent(text())}`,'_blank');ok.style.display='block';}
+function sendFB(){window.open(`https://www.facebook.com/share/1LRxH2PuSu/?mibextid=wwXIfr`,'_blank');ok.style.display='block';}
+</script>
+<script>
+// Fa apparire le card quando scorri
+const cards = document.querySelectorAll('.card, .categoria');
+const osserva = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) e.target.classList.add('visibile');
+  });
+});
+cards.forEach(c => osserva.observe(c));
+</script>Birra
+</body></html>
