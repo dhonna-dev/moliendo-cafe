@@ -137,7 +137,7 @@ footer{background:var(--bd);color:var(--cream);padding:30px 5%;text-align:center
   <div class="sfumatura"></div>
   <div class="hero-testo">
     <h1>Maciniamo Insieme.<br><i>Cuneo incontra Manila.</i></h1>
-    <p style="font-size:12px;letter-spacing:3px;margin-top:16px">COLAZIONE • PRANZO • APERITIVO</p>
+    <p style="font-size:12px;letter-spacing:3px;margin-top:16px"></p>
     <p class="sotto">Il tuo caffè, macinato fresco ogni giorno.</p>
     <div class="hero-bottoni">
       <a href="#menu" class="btn btn-light">Scopri Menu 9 Categorie</a>
@@ -148,9 +148,9 @@ footer{background:var(--bd);color:var(--cream);padding:30px 5%;text-align:center
 </section>
 
 <h2 style="text-align:center;padding:22px 5% 0;background:var(--bd)">I nostri piatti</h2>
-<div class="slider"><img src="cocktail.jpg"><img src="torte.jpg"><img src="aperitivo.jpg"><img src="tapsilog.jpg"><img src="ubecake.jpg"><img src="frappe.jpg"><img src="torta cioccolata.jpg"></div>
+<div class="slider"><img src="cocktail.jpg"><img src="torte.jpg"><img src="aperitivo.jpg"><img src="tapsilog.jpg"><img src="ubecake.jpg"><img src="cocktail2.jpg"><img src="pasta.jpg"><img src="frappe.jpg"><img src="taglieri.jpg"><img src="torta cioccolata.jpg"></div>
 
-<section class="chisiamo" id="chisiamo"><div class="chisiamo-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:40px"><div><h2 style="font-family:Fraunces,serif;font-size:44px;color:var(--b)">Chi Siamo</h2><p style="margin:8px 0;font-weight:700;letter-spacing:1px;font-size:11px">MACINIAMO INSIEME • CORSO DANTE 30, CUNEO • DAL 2019</p><p style="line-height:1.7;font-size:16px;margin-top:18px">Moliendo significa macinare. Maciniamo chicchi italiani e storie filippine ogni mattina alle 5AM a Corso Dante 30.<br><br>Siamo una caffetteria di famiglia nel cuore di Cuneo, dove la passione per il caffè di qualità si unisce alla convivialità. Dal 2019 siamo il punto di ritrovo per chi cerca un ambiente accogliente, prodotti artigianali e momenti speciali da condividere. Vi portiamo a tavola i sapori autentici delle <em>Filippine</em> accanto ai classici italiani.<br><br><em>Maciniamo Insieme. Cuneo incontra Manila.</em></p></div><div><img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0" style="width:100%;height:440px;object-fit:cover;border-radius:24px"></div></div></section>
+<section class="chisiamo" id="chisiamo"><div class="chisiamo-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:40px"><div><h2 style="font-family:Fraunces,serif;font-size:44px;color:var(--b)">Chi Siamo</h2><p style="margin:8px 0;font-weight:700;letter-spacing:1px;font-size:11px">CORSO DANTE 30, CUNEO • DAL 2019</p><p style="line-height:1.7;font-size:16px;margin-top:18px"><br>" Moliendo " significa macinare. Maciniamo chicchi italiani e storie filippine ogni mattina alle 5AM a Corso Dante 30.<br><br>Siamo una caffetteria di famiglia nel cuore di Cuneo, dove la passione per il caffè di qualità si unisce alla convivialità. Dal 2019 siamo il punto di ritrovo per chi cerca un ambiente accogliente, prodotti artigianali e momenti speciali da condividere. Vi portiamo a tavola i sapori autentici delle <em>Filippine</em> accanto ai classici italiani.<br><br>Da noi trovi sempre un sorriso, un cappuccino fatto come si deve e un tavolo dove sentirti a casa.<br><br><em>Maciniamo Insieme. Cuneo incontra Manila.</em></p></div><div><img src="chisiamo.jpg" style="width:100%;height:440px;object-fit:cover;border-radius:24px"></div></div></section>
 
 <section class="menu" id="menu">
 <h2 style="font-family:Fraunces,serif;font-size:42px;text-align:center;color:var(--b)">Il Menu</h2><br><br>
@@ -163,13 +163,15 @@ footer{background:var(--bd);color:var(--cream);padding:30px 5%;text-align:center
 
 <div class="dove-prenota"><div class="box" id="dove"><h2 style="font-family:Fraunces,serif;font-size:32px;color:var(--b)">Dove Siamo</h2><p style="margin:16px 0"><strong>Lunedì - Sabato 7:00-20:00</strong><br>Corso Dante 30, 12100 Cuneo (CN)<br>Italia</p><iframe src="https://maps.google.com/maps?q=Corso+Dante+30,+12100+Cuneo+CN,+Italy&t=&z=17&ie=UTF8&iwloc=&output=embed" style="width:100%;height:320px;border:0;border-radius:16px"></iframe><br><br><a href="https://maps.google.com/?q=Corso+Dante+30+12100+Cuneo" target="_blank" class="btn btn-light" style="background:var(--b);color:var(--cream)">Apri in Google Maps</a> <a href="https://www.google.com/maps/dir/?api=1&destination=Corso+Dante+30+12100+Cuneo" target="_blank" class="btn btn-outline" style="border-color:var(--b);color:var(--b)">→ Indicazioni</a></div><div class="box" id="prenota" style="background:#fffaf0;border-left:1px solid #e8d5c0"><h2 style="font-family:Fraunces,serif;font-size:32px;color:var(--b)">Prenota</h2><label>Nome *</label><input id="nm" placeholder="Il tuo nome"><label>Telefono *</label><input id="tl" placeholder="+39 XXX XXX XXXX"><label>Che prenotazione?</label><select id="ty"><option>Tavolo</option><option>Piccolo Evento</option><option>Torta</option><option>Cookies</option></select><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><label>Quante persone</label><input id="pe" type="number" value="2" min="1"></div><div><label>Data *</label><input id="da" type="date"></div></div><label>Note / Messaggio</label><textarea id="ms" rows="3" placeholder="Aggiungi eventuali note..."></textarea><button onclick="sendWA()" class="btn-send wa">Invia su WhatsApp</button><button onclick="sendFB()" class="btn-send fb">Invia su Facebook</button><p id="ok" style="display:none;margin-top:14px;font-weight:800;color:var(--b);background:#fff;padding:12px;border-radius:12px;text-align:center">Grazie per il vostro messaggio, vi contatteremo al più presto possibile 💚</p></div></div>
 
-<footer>©️ MOLIENDO CAFÉ — Maciniamo Insieme. Cuneo incontra Manila. — Corso Dante 30, 12100 Cuneo</footer>
+<footer>©️ MOLIENDO CAFÉ — Maciniamo Insieme. Cuneo incontra Manila. — Corso Dante 30, 12100 Cuneo
+  <br>Tel: +393514947686 
+</footer>
 
 <script>
 function toggleMenu(){document.getElementById('mob').classList.toggle('open')}
 const menuConFoto={
   "Caffetteria":{img:"caffetteria.jpg", items:[["Caffè Espresso","1,50€"],["Caffè Doppio","2,00€"],["Caffè Deccaffeinato","1,60€"],["Caffè Corretto","1,80€"],["Caffè Shakerato","2,20€"],["Orzo/Ginseng piccolo","1,60€"],["Orzo/Ginseng grande","1,80€"],["Cappuccino","1,70€"],["Cappuccino Decaffeinato","1,80€"],["Cappuccino d'orzo/ginseng","1,80€"],["Cappuccino di soia","2,00€"],["Marocchino","1,70€"],["Marocchino d'orzo/ginseng","1,80€"],["Latte bianco","1,50€"],["Latte Macchiato","1,80€"],["Cioccolata Calda","3,00€"],["Tè Caldo Tisana","3,00€"],["Punch Mandarino","2,80€"]]},
-  "Aperitivo / Cocktail":{img:"cocktails.jpg", items:[["Aperol Spritz","5,50€"],["Baileys","3,00€"],["Campari Soda","3,50€"],["Negroni","5,00€"],["Hugo","6,00€"]]},
+  "Aperitivo / Cocktail":{img:"cocktails.jpg", items:[["Aperol Spritz","5,50€"],["Crodino","3,00€"],["Crodino e Porto","3,50€"],["Bitter Bianco/Rosso","3,00€"],["Campari Soda","3,50€"],["Aperitivo della casa Analcolico","5,00€"],["Campari Spritz","5,50€"],["Raspberry Bitter","5,00€"],["Negroni","5,00€"],["Hugo","6,00€"],["Boulvaldier","7,00€"],["Baileys","3,00€"],["Campari con Bianco","4,00€"],["Disaronno","3,00€"],["Genepy","3,00€"],["Gin Tonic","3,50€"],["Grappa","3,00€"],["J&D","3,00€"],["Jagermeister","3,00€"],["Limoncello","3,00€"],["Pastis","3,00€"],["Sambuca","3,00€"],["San Bitter","3,00€"],["San Simone","3,00€"]]},
   "Birre":{img:"Birra.jpg", items:[["Heineken","3,00€"],["Moretti","3,00€"],["Corona","3,50€"],["Ceres","4,00€"],["Ichnusa","3,00€"],["Bionda 0,20cl","2,70€"],["Bionda 0,40cl","4,00€"]]},
   "Frappe":{img:"frappe.jpg", items:[["Strawberry Cheesecake Frappe","6,00€"],["Coffee Biscoff","6,00€"],["Cheesy Ube Frappe","6,00€"]]},
   "Bibite":{img:"bibite.jpg", items:[["Acqua 0,50 l","1,00€"],["Acqua 1,50 l","2,00€"],["Bicchiere d'acqua","0,50€"],["Coca-cola/Zero","2,50€"],["Fanta","2,50€"],["Schweppes","2,50€"],["Lemon soda","2,50€"],["Estatè Pesca/Limone","2,50€"],["Redbull","3,00€"],["Pesca, Ananas, Ace, Pera","2,50"],["Mirtilo","3,00€"],["Spremuta d'arancia","3,00€"]]},
@@ -215,5 +217,5 @@ const osserva = new IntersectionObserver((entries) => {
   });
 });
 cards.forEach(c => osserva.observe(c));
-</script>Birra
+</script
 </body></html>
