@@ -21,20 +21,21 @@
   100% { opacity: 1; transform: translateY(0) rotate(0) scale(1); }
 }
 
-.menu-card { animation-duration: 1.4s !important; animation-timing-function: ease !important; animation-fill-mode: both !important; }
-.menu-card:nth-child(3n+1) { animation-name: da-sinistra !important; }
-.menu-card:nth-child(3n+2) { animation-name: da-destra !important; }
-.menu-card:nth-child(3n+3) { animation-name: da-sopra !important; }
+.menu-card.mischia-attiva { animation-duration: 1.4s !important; animation-timing-function: ease !important; animation-fill-mode: both !important; }
+.menu-card.mischia-attiva:nth-child(3n+1) { animation-name: da-sinistra !important; }
+.menu-card.mischia-attiva:nth-child(3n+2) { animation-name: da-destra !important; }
+.menu-card.mischia-attiva:nth-child(3n+3) { animation-name: da-sopra !important; }
 
-.menu-card:nth-child(1) { animation-delay: 0s !important; }
-.menu-card:nth-child(2) { animation-delay: 0.15s !important; }
-.menu-card:nth-child(3) { animation-delay: 0.30s !important; }
-.menu-card:nth-child(4) { animation-delay: 0.45s !important; }
-.menu-card:nth-child(5) { animation-delay: 0.60s !important; }
-.menu-card:nth-child(6) { animation-delay: 0.75s !important; }
-.menu-card:nth-child(7) { animation-delay: 0.90s !important; }
-.menu-card:nth-child(8) { animation-delay: 1.05s !important; }
-.menu-card:nth-child(9) { animation-delay: 1.20s !important; }
+.menu-card.mischia-attiva:nth-child(1) { animation-delay: 0s !important; }
+.menu-card.mischia-attiva:nth-child(2) { animation-delay: 0.15s !important; }
+.menu-card.mischia-attiva:nth-child(3) { animation-delay: 0.30s !important; }
+.menu-card.mischia-attiva:nth-child(4) { animation-delay: 0.45s !important; }
+.menu-card.mischia-attiva:nth-child(5) { animation-delay: 0.60s !important; }
+.menu-card.mischia-attiva:nth-child(6) { animation-delay: 0.75s !important; }
+.menu-card.mischia-attiva:nth-child(7) { animation-delay: 0.90s !important; }
+.menu-card.mischia-attiva:nth-child(8) { animation-delay: 1.05s !important; }
+.menu-card.mischia-attiva:nth-child(9) { animation-delay: 1.20s !important; }
+
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,400i&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
@@ -210,20 +211,36 @@ function sendWA(){if(!nm.value||!tl.value||!da.value){alert('Nome Tel Data obbli
 function sendFB(){window.open(`https://www.facebook.com/share/1LRxH2PuSu/?mibextid=wwXIfr`,'_blank');ok.style.display='block';}
 </script>
 <script>
-// MISCHIA VERA - CAMBIA L'ORDINE DELLE CARTE
-(function(){
-  const contenitore = document.querySelector('.menu-grid') || document.getElementById('menuGrid');
+// MISCHIA OGNI VOLTA CHE PREMI MENU
+function mischiaMenu(){
+  var contenitore = document.querySelector('.menu-grid') || document.getElementById('menuGrid');
   if(!contenitore) return;
-  const carte = Array.from(contenitore.children);
-  // Mischia come un mazzo di carte
-  for(let i = carte.length - 1; i > 0; i--){
-    const j = Math.floor(Math.random() * (i + 1));
-    contenitore.appendChild(carte[j]);
-    carte.splice(j, 1);
-    carte.push(carte[i]);
+  var carte = Array.from(contenitore.children);
+  // 1. Togli l'animazione
+  carte.forEach(function(c){ c.classList.remove('mischia-attiva'); });
+  // 2. Mischia l'ordine come le carte
+  for(var i = carte.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = carte[i];
+    carte[i] = carte[j];
+    carte[j] = temp;
   }
-  // Le rimettiamo mischiate
-  carte.forEach(c => contenitore.appendChild(c));
-})();
+  carte.forEach(function(c){ contenitore.appendChild(c); });
+  // 3. Fai ripartire l'animazione
+  void contenitore.offsetWidth;
+  carte.forEach(function(c){ c.classList.add('mischia-attiva'); });
+}
+
+// Parte la prima volta
+mischiaMenu();
+
+// Parte OGNI volta che premi Menu / Il Menu / Home -> Menu
+document.querySelectorAll('a, button').forEach(function(b){
+  if(b.textContent.trim().toLowerCase().includes('menu')){
+    b.addEventListener('click', function(){
+      setTimeout(mischiaMenu, 50);
+    });
+  }
+});
 </script
 </body></html>
