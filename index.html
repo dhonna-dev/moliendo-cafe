@@ -3,45 +3,38 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MOLIENDO CAFÉ - Maciniamo Insieme - Cuneo</title>
 <style>
-/* MOVIMENTI MOLIENDO - morbidi */
-@keyframes saliSu {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+/* === MISCHIA VERA - SI INCROCIANO === */
+
+@keyframes da-sinistra {
+  0% { opacity: 0; transform: translateX(-150px) rotate(-20deg) scale(0.7); }
+  60% { opacity: 1; transform: translateX(30px) rotate(8deg) scale(1.05); }
+  100% { opacity: 1; transform: translateX(0) rotate(0) scale(1); }
 }
-@keyframes galleggia {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-  /* Cascata una alla volta - senza rompere lo zoom */
-#list.cascata > div {
-  animation: saliSu 0.5s ease both;
+@keyframes da-destra {
+  0% { opacity: 0; transform: translateX(150px) rotate(20deg) scale(0.7); }
+  60% { opacity: 1; transform: translateX(-30px) rotate(-8deg) scale(1.05); }
+  100% { opacity: 1; transform: translateX(0) rotate(0) scale(1); }
 }
-#list.cascata > div:nth-child(2) { animation-delay: 0.07s; }
-#list.cascata > div:nth-child(3) { animation-delay: 0.14s; }
-#list.cascata > div:nth-child(4) { animation-delay: 0.21s; }
-#list.cascata > div:nth-child(5) { animation-delay: 0.28s; }
-#list.cascata > div:nth-child(6) { animation-delay: 0.35s; }
-#list.cascata > div:nth-child(7) { animation-delay: 0.42s; }
-#list.cascata > div:nth-child(8) { animation-delay: 0.49s; }
+@keyframes da-sopra {
+  0% { opacity: 0; transform: translateY(-150px) rotate(-15deg) scale(0.7); }
+  60% { opacity: 1; transform: translateY(30px) rotate(5deg) scale(1.05); }
+  100% { opacity: 1; transform: translateY(0) rotate(0) scale(1); }
 }
-.hero h1, .hero p, .hero button {
-  animation: saliSu 0.8s ease both;
-}
-.hero button {
-  animation-delay: 0.3s;
-}
-.card, .categoria, .menu-card {
-  transition: transform 0.4s ease;
-}
-.card:hover, .categoria:hover, .menu-card:hover {
-  transform: translateY(-5px) scale(1.03);
-}
-.badge, .pill {
-  animation: galleggia 3s ease-in-out infinite;
-}
-img:hover {
-  transform: scale(1.03);
-  transition: 0.4s;
-}
+
+.menu-card { animation-duration: 1.4s !important; animation-timing-function: ease !important; animation-fill-mode: both !important; }
+.menu-card:nth-child(3n+1) { animation-name: da-sinistra !important; }
+.menu-card:nth-child(3n+2) { animation-name: da-destra !important; }
+.menu-card:nth-child(3n+3) { animation-name: da-sopra !important; }
+
+.menu-card:nth-child(1) { animation-delay: 0s !important; }
+.menu-card:nth-child(2) { animation-delay: 0.15s !important; }
+.menu-card:nth-child(3) { animation-delay: 0.30s !important; }
+.menu-card:nth-child(4) { animation-delay: 0.45s !important; }
+.menu-card:nth-child(5) { animation-delay: 0.60s !important; }
+.menu-card:nth-child(6) { animation-delay: 0.75s !important; }
+.menu-card:nth-child(7) { animation-delay: 0.90s !important; }
+.menu-card:nth-child(8) { animation-delay: 1.05s !important; }
+.menu-card:nth-child(9) { animation-delay: 1.20s !important; }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,400i&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
@@ -210,9 +203,6 @@ function showCat(cat){
   } else {
     list.innerHTML=d.items.map(v=>`<div style="display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid #eee"><span>${v[0]}</span><b>${v[1]}</b></div>`).join('');
   }
-  list.classList.remove('cascata');
-void list.offsetWidth;
-list.classList.add('cascata');
 }
 renderGrid(); showCat("Cocktail");
 function text(){return `Ciao Moliendo! Nome:${nm.value} Tel:${tl.value} Cosa:${ty.value} Pers:${pe.value} Data:${da.value} Msg:${ms.value}`;}
@@ -220,13 +210,20 @@ function sendWA(){if(!nm.value||!tl.value||!da.value){alert('Nome Tel Data obbli
 function sendFB(){window.open(`https://www.facebook.com/share/1LRxH2PuSu/?mibextid=wwXIfr`,'_blank');ok.style.display='block';}
 </script>
 <script>
-// Fa apparire le card quando scorri
-const cards = document.querySelectorAll('.card, .categoria');
-const osserva = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if(e.isIntersecting) e.target.classList.add('visibile');
-  });
-});
-cards.forEach(c => osserva.observe(c));
+// MISCHIA VERA - CAMBIA L'ORDINE DELLE CARTE
+(function(){
+  const contenitore = document.querySelector('.menu-grid') || document.getElementById('menuGrid');
+  if(!contenitore) return;
+  const carte = Array.from(contenitore.children);
+  // Mischia come un mazzo di carte
+  for(let i = carte.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    contenitore.appendChild(carte[j]);
+    carte.splice(j, 1);
+    carte.push(carte[i]);
+  }
+  // Le rimettiamo mischiate
+  carte.forEach(c => contenitore.appendChild(c));
+})();
 </script
 </body></html>
