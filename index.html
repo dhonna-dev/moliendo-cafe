@@ -11,6 +11,17 @@
 @keyframes galleggia {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
+  /* Cascata una alla volta - senza rompere lo zoom */
+#list.cascata > div {
+  animation: saliSu 0.5s ease both;
+}
+#list.cascata > div:nth-child(2) { animation-delay: 0.07s; }
+#list.cascata > div:nth-child(3) { animation-delay: 0.14s; }
+#list.cascata > div:nth-child(4) { animation-delay: 0.21s; }
+#list.cascata > div:nth-child(5) { animation-delay: 0.28s; }
+#list.cascata > div:nth-child(6) { animation-delay: 0.35s; }
+#list.cascata > div:nth-child(7) { animation-delay: 0.42s; }
+#list.cascata > div:nth-child(8) { animation-delay: 0.49s; }
 }
 .hero h1, .hero p, .hero button {
   animation: saliSu 0.8s ease both;
@@ -18,14 +29,11 @@
 .hero button {
   animation-delay: 0.3s;
 }
-.card, .categoria {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease;
+.card, .categoria, .menu-card {
+  transition: transform 0.4s ease;
 }
-.card.visibile, .categoria.visibile {
-  opacity: 1;
-  transform: translateY(0);
+.card:hover, .categoria:hover, .menu-card:hover {
+  transform: translateY(-5px) scale(1.03);
 }
 .badge, .pill {
   animation: galleggia 3s ease-in-out infinite;
@@ -202,6 +210,9 @@ function showCat(cat){
   } else {
     list.innerHTML=d.items.map(v=>`<div style="display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid #eee"><span>${v[0]}</span><b>${v[1]}</b></div>`).join('');
   }
+  list.classList.remove('cascata');
+void list.offsetWidth;
+list.classList.add('cascata');
 }
 renderGrid(); showCat("Cocktail");
 function text(){return `Ciao Moliendo! Nome:${nm.value} Tel:${tl.value} Cosa:${ty.value} Pers:${pe.value} Data:${da.value} Msg:${ms.value}`;}
