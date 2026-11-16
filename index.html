@@ -234,7 +234,7 @@ function mischiaMenu(){
 // Parte la prima volta
 mischiaMenu();
 
-// Parte OGNI volta che premi Menu / Il Menu / Home -> Menu
+// 1. Parte OGNI volta che premi Menu / Il Menu / Home -> Menu
 document.querySelectorAll('a, button').forEach(function(b){
   if(b.textContent.trim().toLowerCase().includes('menu')){
     b.addEventListener('click', function(){
@@ -242,5 +242,99 @@ document.querySelectorAll('a, button').forEach(function(b){
     });
   }
 });
+
+//  Parte OGNI volta che scorro nel Menu 
+let sezioneMenu = document.querySelector('#menu');
+if (sezioneMenu) {
+  let osservaMenu = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) {
+      mischiaEPoiFerma();
+    }
+  }, { threshold: 0.3 }); // quando vedi il 30% del menu
+
+  osservaMenu.observe(sezioneMenu);
+}
+
+// AGGIUNTA: QUANDO SCORRI GIU' FINO AL MENU SI MISCHIA
+(function(){
+  var giaMischiatoQuestaVolta = false;
+
+  function trovaMenuPerScroll(){
+    // Cerca "Il Menu" come hai nel sito
+    var titoli = document.querySelectorAll('h1, h2, h3, div');
+    for(var i=0; i<titoli.length; i++){
+      if(titoli[i].textContent.trim() === 'Il Menu'){
+        return titoli[i];
+      }
+    }
+    return document.querySelector('#menu');
+  }
+
+  window.addEventListener('scroll', function(){
+    var menuTitolo = trovaMenuPerScroll();
+    if(!menuTitolo) return;
+
+    var dove = menuTitolo.getBoundingClientRect();
+    // Il Menu è entrato nello schermo?
+    var siVede = dove.top < window.innerHeight && dove.bottom > 0;
+
+    if(siVede && !giaMischiatoQuestaVolta){
+      giaMischiatoQuestaVolta = true;
+      // Chiama la mischiata che hai già e funziona con il click!
+      // La facciamo 4 volte e poi si ferma
+      var conta = 0;
+      var timer = setInterval(function(){
+        // Cerca la griglia sotto "Il Menu"
+        var griglia = menuTitolo.nextElementSibling;
+        if(!griglia) griglia = document.querySelector('#menu');
+        if(griglia && griglia.children.length > 1){
+          var carte = Array.from(griglia.children);
+          for(var i = carte.length - 1; i > 0; i--){
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = carte[i];
+            carte[i] = carte[j];
+            carte[j] = temp;
+          }
+          carte.forEach(function(c){ griglia.appendChild(c); });
+        }
+        conta++;
+        if(conta >= 4){
+          clearInterval(timer);
+        }
+      }, 350);
+    }
+
+    // Se sei tornata su, in alto, resetta così la prossima volta mischia di nuovo!
+    if(dove.top > window.innerHeight){
+      giaMischiatoQuestaVolta = false;
+    }
+  });
+})();
+
+// --- FOTO I NOSTRI PIATTI CHE SCORRONO DA SOLE ---
+function faiScorrereFoto(){
+  var titoli = document.querySelectorAll('h2, h3, div');
+  var contenitore = null;
+  titoli.forEach(function(t){
+    if(t.textContent.includes('I nostri piatti')){
+      contenitore = t.nextElementSibling;
+    }
+  });
+  if(!contenitore) return;
+  contenitore.style.display = 'flex';
+  contenitore.style.overflow = 'hidden';
+  contenitore.style.scrollBehavior = 'auto';
+  contenitore.innerHTML = contenitore.innerHTML + contenitore.innerHTML;
+  var pos = 0;
+  setInterval(function(){
+    pos += 1;
+    contenitore.scrollLeft = pos;
+    if(pos >= contenitore.scrollWidth / 2){
+      pos = 0;
+    }
+  }, 30);
+}
+faiScorrereFoto();
+
 </script
 </body></html>
